@@ -1,0 +1,322 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    width: 100%;
+    height:100vh; 
+    background-color: rgb(255, 0, 0);
+    background-position: center;
+    background-size: cover;
+}
+
+.navbar{
+    width: 1200px;
+    height:75px;
+    /*margin:auto; */
+    
+}
+.icon{
+    width:200px;
+    float: left;
+    height: 70px;
+}
+.logo{
+    color: yellow;
+    font-size: 35px;
+    font-family:sans-serif;
+    padding-left: 20px;
+    float:left;
+    padding-top:10px;
+}
+
+.menu{
+    width:400px;
+    float:left;
+    height:70px;
+}
+ul{
+    float:left;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size:20px;
+}
+ul li a{
+    text-decoration: none;
+    color:white;
+    font-family: Arial;
+    font-weight: bold;
+}
+ul li a:hover{
+    color:yellow;
+}
+.btn{
+    display:block;
+    margin-top: 50px;
+    margin-right: 10px;
+    height: 40px;
+    width: 100px;
+    color: yellow;
+}
+.btn .logout{
+    padding:10px;
+    color: black;
+    background-color: yellow;
+    border-radius: 15px;
+}
+.logout a{
+    text-decoration: none;
+    color:black;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.content{
+    width:1200px;
+    height:auto;
+    margin:left;
+    padding-left: 40px;
+    color:white;
+    position:relative; 
+}
+.content h1{
+    font-family:sans-serif;
+    font-size:60px;
+    margin-top:15%;
+    letter-spacing: 2px;;
+}
+.content h2{
+    font-family:cursive;
+    font-size: 30px;
+    color: yellow;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+.content span{
+    color: yellow;
+}
+.user{
+    float: right;
+    margin-right: 150px;
+    margin-top: -290px;
+    width: 500px;
+    height: 450px;
+    background:#fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+.user h1{
+    text-align: center;
+    margin-top: 10%;
+    font-size: 50px;
+    font-family:sans-serif;
+}
+.user span{
+    font-size: 50px;
+    color: indigo;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.user h2{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: cursive;
+}
+/* .content .myacc{
+    width: 160px;
+    height: 50px;
+    background-color: yellow;
+    border: none;
+    margin-top: 20px;
+    margin-left: 60px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.content .myacc a{
+    text-decoration: none;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.myacc:hover{
+    background-color: white;
+}
+.content .createacc{
+    width: 160px;
+    height: 50px;
+    background-color: yellow;
+    border: none;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.content .createacc a{
+    text-decoration: none;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.createacc:hover{
+    background-color: white;
+} */
+.onlineservice{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+.htitle{
+    font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.title{
+    padding-top: 30px;
+    font-size: 35px;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.service{
+    margin-top: 5%;
+    display: flex;
+    justify-content:space-between;
+}
+.amount{
+    max-width: 430px;
+    width:450px;
+    background-color: yellow;
+    border-radius: 30px;
+    margin-bottom: 5%;
+    padding:10px 20px 50px 30px;
+    box-sizing: border-box;
+}
+.service input{
+    position:relative;
+    height:50px;
+    width:350px;
+    margin-top: 30px;
+    border-radius: 50px;
+    font-size: 20px;
+    padding-left: 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.deposit{
+    margin-top: 20px;
+    height:50px;
+    width: 100px;
+    font-family:sans-serif;
+    border-radius: 10px;
+    color: #fff;
+    font-weight:bold;
+    font-size: 17px;
+    background-color: rgb(255, 0, 13);
+}
+.withdraw{
+    margin-top: 20px;
+    height:50px;
+    width: 100px;
+    font-family:sans-serif;
+    border-radius: 10px;
+    color: #fff;
+    font-weight:bold;
+    font-size: 17px;
+    background-color: rgb(255, 0, 13);
+}
+/* .balance{
+    margin-top: 20px;
+    height:50px;
+    width: 100px;
+    font-family:sans-serif;
+    border-radius: 10px;
+    color: #fff;
+    font-weight:bold;
+    font-size: 17px;
+    background-color:rgb(255, 0, 13);
+} */
+.title span{
+    font-family: fantasy;
+    letter-spacing: 3px;
+    font-weight: bold;
+    padding-top: 30px;
+    color:rgb(252, 5, 5);
+    font-size: 50px;
+}
+.service button:hover{
+    background-color: black;
+}
+.transactionhistory{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.transactionhistory h1{
+    font-size: 50px;
+    font-family: cursive;
+}
+.recenthistory
+    height: 500px;
+}
+table{
+    margin-top: 20px;
+    width: 100%;
+}
+table,th,td{
+    padding: 10px;
+}
+th{
+    font-size: 30px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: yellow;
+    color: red;
+}
+td{
+    font-size:30px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/*.recenthistory{
+    margin-top: 5%;
+    display: flex;
+    justify-content:space-between;
+}
+ .history{
+    max-width: 100%;
+    width:850px;
+    background-color: yellow;
+    border-radius: 20px;
+    margin-bottom: 5%;
+    padding:20px 20px 30px 20px;
+    box-sizing: border-box;
+}
+.history h2{
+    font-size: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.history h3{
+    margin-top: 10px;
+    float: left;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.history span{
+    font-family: fantasy;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color:rgb(255, 0, 0);
+    font-size: 50px;
+} */

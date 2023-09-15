@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="SignupPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="signup">
+                <h1 class="title">SIGNUP</h1>
+                <form action="LoginPage.html">
+                    <div class="input">
+                        <input type="text" placeholder="Your Name" id="name">
+                    </div>
+                    <div class="input">
+                        <input type="email" placeholder="Your Email" id="email">
+                    </div>
+                    <div class="input">
+                        <input type="tel" placeholder="Phone Number" id="phoneno">
+                    </div>
+                    <div class="input">
+                        <input type="password" placeholder="Create Password" id="password">
+                    </div>
+                    <div class="input">
+                        <input type="password" placeholder="Confirm Password" id="confirmpassword">
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="Secret Key" id="secretkey">
+                    </div>
+                    <div class="checkbox">
+                        <div class="checkbox-content">
+                            <input type="checkbox" required id="logcheck">
+                            <label for="logcheck" class="text">I Accept The Terms Of Use & Privacy Policy</label>
+                        </div>
+                    </div>
+                    <div class="input-button">
+                        <button id="signupbtn">SignUp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+    <script>
+            var olduser=[
+            {"name":"abdul","email":"abdul@gmail.com","phoneno":"1111111111","password":"1111111111","confirmpassword":"1111111111", "secretkey":"11111111","balance":"0","logcheck":""},
+            {"name":"ajees","email":"ajees@gmail.com","phoneno":"2222222222","password":"2222222222","confirmpassword":"2222222222", "secretkey":"11111111","balance":"0","logcheck":""},
+            {"name":"elon","email":"elon@gmail.com","phoneno":"3333333333","password":"3333333333","confirmpassword":"3333333333", "secretkey":"11111111","balance":"0","logcheck":""},
+            {"name":"buffet","email":"buffet@gmail.com","phoneno":"4444444444","password":"4444444444","confirmpassword":"4444444444", "secretkey":"11111111","balance":"0","logcheck":""},
+            {"name":"jeff","email":"jeff@gmail.com","phoneno":"5555555555","password":"5555555555","confirmpassword":"5555555555", "secretkey":"11111111","balance":"0","logcheck":""}
+            ];            
+                                                           
+
+
+       var signupbtn=document.getElementById("signupbtn");
+        signupbtn.addEventListener("click",function(){
+            
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var phoneno=document.getElementById("phoneno").value;
+            var password=document.getElementById("password").value;
+            var confirmpassword=document.getElementById("confirmpassword").value;
+            var secretkey=document.getElementById("secretkey").value;
+            var logcheck=document.getElementById("logcheck");
+
+            users=JSON.parse(localStorage.getItem("users")) //Getting from local storage
+            if(users == null){ //checking whether local storage has users already
+                localStorage.setItem("users",JSON.stringify(olduser)) //if not 
+		        users=JSON.parse(localStorage.getItem("users"))
+            }
+			var exist = 1;
+            
+            for(i=0;i<users.length;i++){
+                var checkem
+                ail=users[i]["email"];
+                var checkphoneno=users[i]["phoneno"];		
+                if(checkemail==email && checkphoneno==phoneno){ 
+                   alert("Account Already Exist");
+				   exist = 0;
+				
+                }			
+            }
+			
+
+			if(exist != 0){
+            if(name==""||name.length>20){
+                alert("Enter Valid UserName! Click Ok To Continue");
+            }
+            else if(email==null||email==""){
+                alert("Enter Valid EmailID! Click Ok To Continue");
+            }
+            else if(phoneno==""||phoneno.length>10||phoneno.length<10){
+                alert("Enter Valid Phoneno! Click Ok To Continue");
+            }
+            else if(password==""||password.length<10){
+                alert("Enter Valid Password! Click Ok To Continue");
+            }
+            else if(confirmpassword!=password){
+                alert("Password Didn't Match! Click Ok To Continue");
+            }
+            else if(secretkey==""||secretkey.length<8){
+                alert("Enter Valid Secret Key! Click Ok To Continue");
+            }
+            else{
+			
+			user=
+            {
+                "name":name,"email":email,"phoneno":phoneno,"password":password,"confirmpassword":confirmpassword,"secretkey":secretkey,"logcheck":logcheck
+            };                
+
+		        users.push(user);
+                localStorage.setItem("users",JSON.stringify(users));
+			    alert("SignUP Successfully");
+            }  
+		}
+        });
+    </script>
+</body>
+</html>

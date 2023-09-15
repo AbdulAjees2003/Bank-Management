@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="Forgot.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1 class="title">Forgot Password</h1>
+            <form action="LoginPage.html">
+                <div class="input">
+                    <input type="email" id="email" placeholder="Your EmailID">
+                </div>
+                <div class="input">
+                    <input type="password" id="password" placeholder="New Password">
+                </div>
+                <div class="input">
+                    <input type="password" id="confirmpass" placeholder="Confirm Password">
+                </div>
+                <div class="input">
+                    <input type="text" id="secretkey" placeholder="Secret Key">
+                </div>
+                <div class="input-button">
+                    <input type="button" id="changebtn" value="Change Password">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        changebtn=document.getElementById("changebtn");
+        changebtn.addEventListener("click",function(){
+            var uemail=document.getElementById("email").value;
+            var newpassword=document.getElementById("password").value;
+            var checknewpass=document.getElementById("confirmpass").value;
+            var secretkey=document.getElementById("secretkey").value;
+
+            users=JSON.parse(localStorage.getItem("users"));
+            
+            for(i=0;i<users.length;i++){
+                var checkemail=users[i]["email"];
+                var checkpassword=users[i]["password"];
+                var checksecretkey=users[i]["secretkey"];
+            }
+
+                if(checkemail==uemail&&checksecretkey==secretkey){
+                    if(newpassword==checknewpass){
+                        //localStorage.setItem("password",document.getElementById("password").value);
+                        checkpassword=document.getElementById("password").value;
+
+                        alert("Password Changed Successfully");
+                        window.location.href="LoginPage.html";
+                    }else{
+                        alert("Invalid User");
+                    }
+                }
+            });
+        
+    </script>
+</body>
+</html>

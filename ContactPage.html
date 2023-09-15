@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CONTACT US</title>
+    <link rel="stylesheet" href="ContactPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h1 class="title">CONTACT <span>US</span></h1>
+            <form action="HomePage1.html">
+                <div class="input">
+                <input type="text" id="name" placeholder="Your Name">
+                </div>
+                <div class="input">
+                    <input type="email" id="email" placeholder="Your E-mail">
+                </div>
+                <div class="input">
+                    <input type="text" id="subject" placeholder="Subject">
+                </div>
+                <div class="input-msg">
+                    <textarea type="text" id="message" placeholder="Your Message..."></textarea>
+                </div>
+                <div class="button">
+                    <input type="button" id="msgbtn" value="Send Message">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var msgbtn=document.getElementById("msgbtn");
+        msgbtn.addEventListener("click",function(){
+            //For Checking Password For Deposit And Withdraw 
+        users=JSON.parse(localStorage.getItem("users"));
+        for(i=0;i<users.length;i++){
+            var username=users[i]["name"];
+            var useremail=users[i]["email"];
+        }
+            //Get Inputs From Users
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var subject=document.getElementById("subject").value;
+            var message=document.getElementById("message").value;
+
+            contactinfo=JSON.parse(localStorage.getItem("contactinfo")) //Getting from local storage
+            if(contactinfo == null){ //checking whether local storage has users already 
+		    contactinfo=JSON.parse(localStorage.getItem("contactinfo"))
+            }
+
+
+            if(name==username && email==useremail){ 
+                contact=
+                {
+                   "name":name,"email":email,"subject":subject,"message":message
+                };
+                //contactinfo.push(contact);
+                localStorage.setItem("contactinfo",JSON.stringify(contactinfo));
+                alert("We Will Reach You Soon!!!");
+            }else{
+                alert("Invalid User Inputs!!!");
+            }
+        });
+    </script>
+</body>
+</html>

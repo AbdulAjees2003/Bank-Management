@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MasterBank HomePage</title>
+    <link rel="stylesheet" href="HomePage1.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h1 class="logo">MasterBank</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <li><a href="HomePage1.html">HOME</a></li>
+                    <li><a href="#">NETBANKING</a></li>
+                    <li><a href="#">CAREERS</a></li>
+                    <li><a href="ContactPage.html">CONTACT</a></li>    
+                    <li><a href="#">ABOUT</a></li>               
+                </ul>
+                <div class="btn">
+                    <button class="logout"><a href="HomePage.html">LogOut</a></button>
+                </div>
+            </div>
+        </div>    
+            <div class="content">
+                <h1>Make Your Online<br><span>Banking Experience</span><br>Wonderful With Us</h1>
+                <h2 class="text">Let's Start This Beautiful Journey...</h2>
+                <!-- <button class="myacc"><a href="#">My Account</a></button>
+                <button class="createacc"><a href="#">Create Account</a></button> -->
+            </div>
+            <div class="user">
+                <h1>Hello <br><span id="username"></span><br>Welcome To Our Bank!!!</h1>
+                <h2>Scroll Down To Use Our Service...</h2>
+            </div>
+    </div>
+    <div class="onlineservice">
+        <h1 class="htitle">SERVICE WE PROVIDE</h1>
+        <div class="service">
+            <div class="amount">
+                <h3 class="title">DEPOSIT</h3>
+               <input  type="number" placeholder="Enter Deposit Amount $" id="deposit">
+               <input  type="password" placeholder="Enter Your Password" id="deppassword">
+               <button class="deposit" id="depbtn">Deposit</button>
+            </div>
+            <div class="amount">
+                <h3 class="title">WITHDRAW</h3>
+                <input type="number" placeholder="Enter Withdraw Amount $" id="withdraw">
+                <input type="password" placeholder="Enter Your Password" id="witpassword">
+                <button class="withdraw" id="witbtn">Withdraw</button>
+            </div>
+            <div class="amount">
+                <h3 class="title">CURRENT BALANCE<br><br><span id="balance"></span></h3>
+            </div>
+        </div>
+    </div>
+    <div class="transactionhistory">
+        <h1>TRANSACTION HISTORY</h1>
+        <div class="recenthistory">
+            <table id="table">
+                <tr>
+                    <th>DEPOSIT</th>
+                    <th>WITHDRAW</th>
+                    <th>BALANCE</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+
+        document.getElementById("username").innerHTML=localStorage.getItem("uname");
+        var username=localStorage.getItem("uname");
+
+        var balance =localStorage.getItem("balance");
+        if(balance) {
+            balance = Number(balance);
+        } else {
+            balance = 0;
+            localStorage.setItem("balance",balance);
+        }
+        document.getElementById("balance").innerHTML=balance;
+
+        logusers=JSON.parse(localStorage.getItem("logusers")); 
+            var i=logusers.length;
+                //var checkemail=logusers[i-1]["email"];
+                var checkpassword=logusers[i-1]["password"];
+                
+    
+        var depbtn=document.getElementById("depbtn");
+        depbtn.addEventListener("click",function(){
+            let row=-1;
+            var dephist=[];
+            deposithistory=JSON.parse(localStorage.getItem("deposithistory")) //Getting from local storage
+            if(deposithistory == null){ //checking whether local storage has users already
+                localStorage.setItem("deposithistory",JSON.stringify(dephist)) //if not 
+		        deposithistory=JSON.parse(localStorage.getItem("deposithistory"))
+            }
+
+            //Get Input From Users
+            var deposit=parseInt(document.getElementById("deposit").value);
+            var deppassword=document.getElementById("deppassword").value;
+            let table=document.getElementById("table");
+            if(checkpassword==deppassword){
+                if(deposit==0 || deposit==null){
+                    alert("Enter Valid Amount");
+                }else{
+                    //To Show Balance And Store It
+                    document.getElementById("balance").innerHTML=balance=balance+deposit;
+                    localStorage.setItem("balance",balance);
+
+                    //Display Values In Table
+                    let newrow=table.insertRow(row);
+
+                    let cell1=newrow.insertCell(0);
+                    let cell2=newrow.insertCell(1);
+                    let cell3=newrow.insertCell(2);
+
+                    cell1.innerHTML=deposit;
+                    cell3.innerHTML=balance;
+                    //row++;
+
+                    deposithist={
+                        "username":username,"deposit":deposit,"balance":balance
+                    };
+                    deposithistory.push(deposithist);
+                    localStorage.setItem("deposithistory",JSON.stringify(deposithistory));
+                    alert("Successfully Credited");
+                }
+                }else{
+                    alert("Invalid Password!!!");
+            }
+        });
+
+
+        var witbtn=document.getElementById("witbtn");
+        witbtn.addEventListener("click",function(){
+            var row=-1;
+            var withhist=[];
+            withdrawhistory=JSON.parse(localStorage.getItem("withdrawhistory")) //Getting from local storage
+            if(withdrawhistory == null){ //checking whether local storage has users already
+                localStorage.setItem("withdrawhistory",JSON.stringify(withhist)); //if not 
+		        withdrawhistory=JSON.parse(localStorage.getItem("withdrawhistory"));
+            }
+
+            var withdraw=parseInt(document.getElementById("withdraw").value);
+            var witpassword=document.getElementById("witpassword").value;
+            let table=document.getElementById("table");
+           if(checkpassword==witpassword){
+                if(withdraw>localStorage.getItem("balance") || withdraw==0 || withdraw==null){
+                    alert("Enter Valid Amount");
+                }else{
+                    //To Show Balance And Store It
+                    document.getElementById("balance").innerHTML=balance=balance-withdraw;
+                    localStorage.setItem("balance",balance);
+
+                    let newrow=table.insertRow(row);
+                    let cell1=newrow.insertCell(0);
+                    let cell2=newrow.insertCell(1);
+                    let cell3=newrow.insertCell(2);
+                    
+                    cell2.innerHTML=withdraw;
+                    cell3.innerHTML=balance;
+                    //row++;
+
+                    withdrawhist={
+                        "username":username,"withdraw":withdraw,"balance":balance
+                    };
+                    withdrawhistory.push(withdrawhist);
+                    localStorage.setItem("withdrawhistory",JSON.stringify(withdrawhistory));
+                    alert("Withdraw Succeccfully");
+                }
+            }else{
+                alert("Invalid Password!!!");
+            }
+        });
+    </script>
+</body>
+</html>

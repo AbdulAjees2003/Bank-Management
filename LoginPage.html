@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="Loginpage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="login">
+                <h1 class="title">LOGIN</h1>
+                <form action="HomePage1.html">
+                    <div class="input">
+                        <input type="text" placeholder="Account Holder Name" id="name">
+                    </div>
+                    <div class="input">
+                        <input type="email" placeholder="Your Email" id="email">
+                    </div>
+                    <div class="input">
+                        <input type="password" placeholder="Your Password" id="password">
+                    </div>
+                    <div class="checkbox">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="logcheck" required>
+                            <label for="logcheck" class="text">Remember Me</label>
+                        </div>
+                        <a href="Forgot.html" class="text">Forgot password?</a>
+                    </div>
+                    <div class="input-button">
+                     <input type="button" id="loginbtn" value="Login">
+                    </div>
+                </form>
+                    <div class="signup">
+                        <span class="text">Not A Member?
+                        <a href="Signup Page.html" class="Signup-text">SignUp Now</a>
+                        </span>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var loginbtn=document.getElementById("loginbtn");
+        loginbtn.addEventListener("click",function(){
+
+            var loginusers=[];
+
+            users=JSON.parse(localStorage.getItem("users"));
+
+            var uemail=document.getElementById("email").value;
+            var uname=document.getElementById("name").value;
+            var upassword=document.getElementById("password").value;
+            var logcheck=document.getElementById("logcheck");
+            localStorage.setItem("uname",uname);
+
+            logusers=JSON.parse(localStorage.getItem("logusers")) //Getting from local storage
+            if(logusers == null){ //checking whether local storage has users already
+                localStorage.setItem("logusers",JSON.stringify(loginusers)) //if not 
+		        logusers=JSON.parse(localStorage.getItem("logusers"))
+            }
+
+            var flag=1;
+            for(i=0;i<users.length;i++){
+                var checkemail=users[i]["email"];
+                var checkpassword=users[i]["password"];
+                var checkname=users[i]["name"];
+                if(checkemail==uemail && checkpassword==upassword && checkname==uname){
+                    flag=0;
+                    break;
+                }else{
+                }
+                
+            }
+            
+                if(flag!=1){
+                alert("Login Successfully");
+                loguser=
+            {
+                "name":uname,"email":uemail,"password":upassword
+            };                
+
+		        logusers.push(loguser);
+                localStorage.setItem("logusers",JSON.stringify(logusers)); 
+                window.location.href="HomePage1.html";
+                }else{
+                    alert("Invalid User Inputs");
+                }
+        });
+    </script>
+</body>
+</html>
